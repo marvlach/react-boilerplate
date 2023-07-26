@@ -1,0 +1,80 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "mydataease_backend",
+            "type": "docker-build",
+            "dockerBuild": {
+                "context": "${workspaceFolder}",
+                "dockerfile": "backend.Dockerfile",
+                "tag": "mydataease_backend:latest",
+                "pull": false,
+                "customOptions": "",
+                "target": "",
+                "labels": {
+                    "includeDefaults": false
+                },
+                "buildArgs": {}
+            }
+        },
+        {
+            "label": "mydataease_frontend",
+            "type": "docker-build",
+            "dockerBuild": {
+                "context": "${workspaceFolder}",
+                "dockerfile": "frontend.Dockerfile",
+                "tag": "mydataease_frontend:latest",
+                "pull": false,
+                "customOptions": "",
+                "target": "",
+                "labels": {
+                    "includeDefaults": false,
+                }
+            }
+        },
+        {
+            "label": "docker-compose up 📦️",
+            "type": "docker-compose",
+            "dockerCompose": {
+                "up": {
+                    "detached": true,
+                    "build": true,
+                    "services": []
+                },
+                "files": [
+                    "${workspaceFolder}/docker-compose.build.yml"
+                ]
+            },
+            "dependsOn": [
+                "mydataease_backend",
+                "mydataease_frontend"
+            ]
+        },
+        {
+            "label": "docker-compose debug 🐛",
+            "type": "docker-compose",
+            "dockerCompose": {
+                "up": {
+                    "detached": true,
+                    "build": true,
+                    "services": []
+                },
+                "files": [
+                    "${workspaceFolder}/docker-compose.debug.yml"
+                ]
+            },
+            "dependsOn": [
+                "mydataease_backend",
+                "mydataease_frontend"
+            ]
+        },
+        {
+            "label": "Poetry - export requirements.txt",
+            "command": "poetry export --without-hashes --format=requirements.txt > requirements.txt",
+            "type": "shell",
+            "options": {
+                "cwd": "${workspaceFolder}/backend"
+            },
+        }
+    ]
+}

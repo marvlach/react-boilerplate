@@ -1,0 +1,6 @@
+*.env
+*.key
+*.crt
+configuration/
+backend/poetry.lock
+frontend/package-lock.json

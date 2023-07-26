@@ -1,0 +1,318 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "[FastAPI] attach",
+            "type": "python",
+            "request": "attach",
+            "port": 5677,
+            "host": "localhost",
+            // "gevent": true,
+            "pathMappings": [
+                {
+                    "localRoot": "${workspaceFolder}/backend/app",
+                    "remoteRoot": "/mydataease/backend/app"
+                }
+            ],
+            // "console": "integratedTerminal",
+            "jinja": true,
+        },
+        {
+            "name": "[Celery] attach",
+            "type": "python",
+            "request": "attach",
+            "port": 5678,
+            "host": "localhost",
+            // "gevent": true,
+            "pathMappings": [
+                {
+                    "localRoot": "${workspaceFolder}/backend/app",
+                    "remoteRoot": "/mydataease/backend/app"
+                }
+            ],
+            // "console": "integratedTerminal",
+            "jinja": true,
+        },
+        {
+            // Run this every time you need to generate a new migration.
+            // ? After running this find the new created migration add a name to the file after _ and inside at docstring.
+            "name": "[Alembic] autogenerate",
+            "type": "python",
+            "request": "launch",
+            "module": "alembic",
+            "cwd": "${workspaceFolder}/backend",
+            // "PYTHONPATH": "${workspaceFolder}/backend",
+            "args": [
+                // "run",
+                // "alembic",
+                "revision",
+                "--autogenerate",
+            ],
+            "console": "integratedTerminal",
+            "envFile": "${workspaceFolder}/.env",
+            "env": {
+                "PYTHONPATH": "${cwd}",
+                "PYTHONDONTWRITEBYTECODE": "1",
+                "PYTHONUNBUFFERED": "1",
+                "POSTGRES_SERVER": "localhost"
+            },
+        },
+        {
+            "name": "[Alembic] upgrade head",
+            "type": "python",
+            "request": "launch",
+            "module": "alembic",
+            "cwd": "${workspaceFolder}/backend",
+            // "PYTHONPATH": "${workspaceFolder}/backend",
+            "args": [
+                "upgrade",
+                "head",
+            ],
+            "console": "integratedTerminal",
+            "envFile": "${workspaceFolder}/.env",
+            "env": {
+                "PYTHONPATH": "${cwd}",
+                "PYTHONDONTWRITEBYTECODE": "1",
+                "PYTHONUNBUFFERED": "1",
+                "POSTGRES_SERVER": "localhost"
+            },
+        },
+        {
+            // Run this every time you need to downgrade a new migration.
+            "name": "[Alembic] downgrade -1",
+            "type": "python",
+            "request": "launch",
+            "module": "alembic",
+            "cwd": "${workspaceFolder}/backend",
+            // "PYTHONPATH": "${workspaceFolder}/backend",
+            "args": [
+                // "run",
+                // "alembic",
+                "downgrade",
+                "-1",
+            ],
+            "console": "integratedTerminal",
+            "envFile": "${workspaceFolder}/.env",
+            "env": {
+                "PYTHONPATH": "${cwd}",
+                "PYTHONDONTWRITEBYTECODE": "1",
+                "PYTHONUNBUFFERED": "1",
+                "POSTGRES_SERVER": "localhost"
+            },
+        },
+        {
+            // You can run this one or more times, there are checks for doing so.
+            // Run it if there any any changes to the secret .keys, packages and dependencies.
+            "name": "[Python] initialize.py",
+            "type": "python",
+            "request": "launch",
+            "program": "${workspaceFolder}/backend/app/initialize.py",
+            "console": "integratedTerminal",
+            "envFile": "${workspaceFolder}/.env",
+            "env": {
+                "PYTHONPATH": "${cwd}/backend",
+                "PYTHONDONTWRITEBYTECODE": "1",
+                "PYTHONUNBUFFERED": "1",
+                "ENCRYPTION_KEYS_FOLDER_NAME": "${workspaceFolder}/keys",
+                "POSTGRES_SERVER": "localhost",
+                "ALEMBIC_DIRECTORY": "${cwd}/backend"
+            },
+            "autoReload": {
+                "enable": true
+            },
+        },
+        {
+            "name": "[Alembic] init",
+            "type": "python",
+            "request": "launch",
+            "module": "alembic",
+            "cwd": "${workspaceFolder}/backend",
+            // "PYTHONPATH": "${workspaceFolder}/backend",
+            "args": [
+                "init",
+                "alembic"
+            ],
+            "console": "integratedTerminal",
+            "envFile": "${workspaceFolder}/.env",
+            "env": {
+                "HOST": "localhost",
+                "PYTHONPATH": "${cwd}",
+                "PYTHONDONTWRITEBYTECODE": "1",
+                "PYTHONUNBUFFERED": "1",
+            },
+        },
+        {
+            "name": "FastAPI: Run Server",
+            "type": "python",
+            "request": "launch",
+            "module": "uvicorn",
+            "args": [
+                "app.main:fast_api",
+                "--host",
+                "localhost",
+                "--port",
+                "2233",
+                "--workers",
+                "1",
+                // Remove the following reload commands for the workers to function.
+                "--reload",
+                "--reload-dir",
+                "${workspaceFolder}/backend/app",
+            ],
+            // "console": "integratedTerminal",
+            // "jinja": true,
+            "subProcess": true,
+            "justMyCode": true,
+            "env": {
+                "PYTHONPATH": "${workspaceFolder}/backend",
+                // "PYTHONWARNINGS": "always",
+                // "PYTHONDONTWRITEBYTECODE": "1",
+                // "PYTHONUNBUFFERED": "1",
+                // "GEVENT_SUPPORT": "True",
+                "IS_DEBUG_SESSION": "True",
+                "POSTGRES_SERVER": "localhost",
+                "ENCRYPTION_KEYS_FOLDER_NAME": "${workspaceFolder}/keys",
+                // "ALEMBIC_DIRECTORY": "${workspaceFolder}/backend",
+                // "SQLALCHEMY_WARN_20": "1",
+                // "REQUESTDOCS_FOLDER_NAME": "${workspaceFolder}\\configuration\\RequestDocs",
+                "PYDEVD_DISABLE_FILE_VALIDATION": "1",
+                "REDIS_SERVER": "localhost",
+                "RABBITMQ_SERVER": "localhost"
+            },
+            // "envFile": "${workspaceFolder}/.env",
+            "autoReload": {
+                "enable": true,
+            },
+        },
+        {
+            "name": "Celery: Run Worker",
+            "type": "python",
+            "request": "launch",
+            "module": "celery",
+            "envFile": "${workspaceFolder}/.env",
+            "args": [
+                "-A",
+                "app.core.worker",
+                "worker",
+                "-l",
+                "debug",
+                "-Q",
+                "mydataease_jobs",
+                "--pool",
+                "gevent",
+                "--concurrency",
+                "1",
+                "-Ofair",
+                "-E",
+                "-P",
+                "solo"
+            ],
+            "console": "integratedTerminal",
+            // "gevent": true,
+            "env": {
+                "PYTHONPATH": "${workspaceFolder}/backend",
+                "ENCRYPTION_KEYS_FOLDER_NAME": "${workspaceFolder}/keys",
+                "GEVENT_SUPPORT": "True",
+                "PYTHONDONTWRITEBYTECODE": "1",
+                "PYTHONUNBUFFERED": "1",
+                "REDIS_SERVER": "localhost",
+                "RABBITMQ_SERVER": "localhost",
+                "POSTGRES_SERVER": "localhost",
+            },
+            // "preLaunchTask": "task|CeleryWorker",
+        },
+        {
+            "name": "Celery: Run Beat",
+            "type": "python",
+            "request": "launch",
+            "module": "celery",
+            "envFile": "${workspaceFolder}/.env",
+            "args": [
+                "-A",
+                "app.core.worker",
+                "beat",
+                "-S",
+                "redbeat.RedBeatScheduler",
+                "-l",
+                "debug"
+            ],
+            "console": "integratedTerminal",
+            "env": {
+                "PYTHONPATH": "${workspaceFolder}/backend",
+                "GEVENT_SUPPORT": "True",
+                "PYTHONDONTWRITEBYTECODE": "1",
+                "PYTHONUNBUFFERED": "1",
+                "REDIS_SERVER": "localhost",
+                "RABBITMQ_SERVER": "localhost"
+            },
+            // "preLaunchTask": "task|CeleryBeat",
+        },
+        // {
+        //     "name": "Celery: Run Flower",
+        //     "type": "python",
+        //     "request": "launch",
+        //     "module": "celery",
+        //     "envFile": "${workspaceFolder}/.env",
+        //     "args": [
+        //         "-A",
+        //         "app.core.worker",
+        //         "--broker",
+        //         "amqp://guest:guest@localhost:5672//",
+        //         "flower"
+        //     ],
+        //     "console": "integratedTerminal",
+        //     "env": {
+        //         "PYTHONPATH": "${workspaceFolder}/backend",
+        //         "GEVENT_SUPPORT": "True",
+        //         "PYTHONDONTWRITEBYTECODE": "1",
+        //         "PYTHONUNBUFFERED": "1",
+        //         "REDIS_SERVER": "localhost",
+        //         "RABBITMQ_SERVER": "localhost"
+        //     },
+        //     // "preLaunchTask": "[Poetry]: Install/Update Packages/Dependencies"
+        //     // "preLaunchTask": "task|CeleryFlower",
+        // },
+        {
+            "name": "Node.js: launch",
+            "command": "npm run dev",
+            "request": "launch",
+            "type": "node-terminal",
+            // "console": "integratedTerminal",
+            "cwd": "${workspaceFolder}/frontend",
+        },
+        {
+            "name": "Node.js: test",
+            "command": "npm run test",
+            "request": "launch",
+            "type": "node-terminal",
+            // "console": "integratedTerminal",
+            "cwd": "${workspaceFolder}/frontend",
+        },
+        {
+            "name": "Node.js: attach",
+            "type": "node",
+            "request": "attach",
+            "restart": false,
+            "port": 9222,
+            "address": "localhost",
+            "localRoot": "${workspaceFolder}/frontend",
+            "remoteRoot": "/app",
+            "cwd": "${workspaceFolder}/frontend",
+        }
+    ],
+    "compounds": [
+        // {
+        //     "name": "MyDataEase",
+        //     "configurations": [
+        //         "Celery: Run Worker",
+        //         "Celery: Run Beat",
+        //         // "Celery: Run Flower",
+        //         "FastAPI: Run Server",
+        //     ],
+        //     "stopAll": true
+        // }
+    ]
+}

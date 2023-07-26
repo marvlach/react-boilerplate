@@ -1,0 +1,14 @@
+.form-container {
+  width: 35rem;
+  margin: 1rem auto;
+  margin-top: 5rem;
+}
+
+.form-title {
+  text-align: center;
+}
+
+.button-container {
+  display: flex;
+  justify-content: center;
+}

@@ -1,0 +1,70 @@
+{
+    "[python]": {
+        "editor.defaultFormatter": "ms-python.black-formatter",
+        "editor.formatOnSave": true,
+        "editor.codeActionsOnSave": {
+            "source.fixAll": true,
+            "source.organizeImports": true
+        }
+    },
+    "black-formatter.args": [
+        "--line-length=150",
+        "--preview"
+    ],
+    "python.analysis.typeCheckingMode": "off",
+    "python.envFile": "",
+    "python.linting.enabled": true,
+    "python.linting.lintOnSave": true,
+    "python.testing.pytestArgs": [
+        "${workspaceFolder}/backend/test",
+        "-s"
+    ],
+    "python.testing.promptToConfigure": true,
+    "python.testing.pytestEnabled": true,
+    "python.testing.unittestEnabled": false,
+    "ruff.args": [
+        "--line-length=150",
+        "--ignore=E711,E712,F841"
+    ],
+    "eslint.validate": ["javascript", "javascriptreact", "html", "typescript", "typescriptreact"],
+    "[javascript]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode",
+        "editor.formatOnSave": true,
+        "editor.codeActionsOnSave": {
+            "source.fixAll.eslint": true,
+            "source.organizeImports": true
+        },
+        "editor.tabSize": 2,
+        "files.eol": "\n",
+    },
+    "[javascriptreact]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode",
+        "editor.formatOnSave": true,
+        "editor.codeActionsOnSave": {
+            "source.fixAll.eslint": true,
+            "source.organizeImports": true
+        },
+        "editor.tabSize": 2,
+        "files.eol": "\n",
+    },
+    "[typescript]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode",
+        "editor.formatOnSave": true,
+        "editor.codeActionsOnSave": {
+            "source.fixAll.eslint": true,
+            "source.organizeImports": true
+        },
+        "editor.tabSize": 2,
+        "files.eol": "\n",
+    },
+    "[typescriptreact]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode",
+        "editor.formatOnSave": true,
+        "editor.codeActionsOnSave": {
+            "source.fixAll.eslint": true,
+            "source.organizeImports": true
+        },
+        "editor.tabSize": 2,
+        "files.eol": "\n",
+    }
+}

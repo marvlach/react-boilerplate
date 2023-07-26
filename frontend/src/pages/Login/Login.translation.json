@@ -1,0 +1,30 @@
+{
+  "username": {
+    "en": "Username",
+    "gr": "Ονομα χρήστη"
+  },
+  "password": {
+    "en": "Password",
+    "gr": "Κωδικός Πρόσβασης"
+  },
+  "login": {
+    "en": "Login",
+    "gr": "Σύνδεση"
+  },
+  "username_error": {
+    "en": "Please input your username!",
+    "gr": "Παρακαλώ εισάγετε το όνομα χρήστη!"
+  },
+  "password_error": {
+    "en": "Please input your password!",
+    "gr": "Παρακαλώ εισάγετε το κωδικό πρόσβασης!"
+  },
+  "submit_error_401": {
+    "en": "Invalid username or password",
+    "gr": "Λάθος όνομα ή κωδικός πρόσβασης"
+  },
+  "submit_error_other": {
+    "en": "An error occurred. Please try again.",
+    "gr": "Συνέβη ένα σφάλμα. Παρακαλώ δοκιμάστε ξανά."
+  }
+}
