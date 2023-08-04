@@ -1,7 +1,7 @@
 import { AlertOutlined, AlertTwoTone } from '@ant-design/icons';
 import { Button, Layout, Switch } from 'antd';
 import { useDispatch } from 'react-redux';
-import logo from '../../../assets/MyDataEaseLogo.png';
+import logo from '../../../assets/react.svg';
 import { languageActions } from '../../../store/languageSlice';
 import { useAppSelector } from '../../../store/store';
 import { themeActions } from '../../../store/themeSlice';
@@ -43,7 +43,7 @@ export default function MainHeader() {
         backgroundColor: headerBackgroundColor,
       }}
     >
-      <img src={logo} className="logo" alt="MyDataEase logo" />
+      <img src={logo} className="logo" alt="logo" />
       {user.isAuth && <Button onClick={handleLogout}>Logout</Button>}
       <div style={{ transform: 'rotate(-90deg)' }}>
         <Switch
